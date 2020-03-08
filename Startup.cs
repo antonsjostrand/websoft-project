@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using websoftProject.Services;
 
 namespace websoftProject
 {
@@ -23,6 +24,7 @@ namespace websoftProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.Add(new ServiceDescriptor(typeof(DatabaseService), new DatabaseService(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

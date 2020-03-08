@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andre\\Desktop\\websoftpro\\websoft-project\\websoftProject.csproj": {}
+    "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andre\\Desktop\\websoftpro\\websoft-project\\websoftProject.csproj": {
+    "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andre\\Desktop\\websoftpro\\websoft-project\\websoftProject.csproj",
+        "projectUniqueName": "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj",
         "projectName": "websoftProject",
-        "projectPath": "C:\\Users\\Andre\\Desktop\\websoftpro\\websoft-project\\websoftProject.csproj",
-        "packagesPath": "C:\\Users\\Andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andre\\Desktop\\websoftpro\\websoft-project\\obj\\",
+        "projectPath": "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj",
+        "packagesPath": "C:\\Users\\Anton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -37,6 +41,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.19, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
