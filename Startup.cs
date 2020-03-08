@@ -25,6 +25,7 @@ namespace websoftProject
         {
             services.AddRazorPages();
             services.Add(new ServiceDescriptor(typeof(DatabaseService), new DatabaseService(Configuration.GetConnectionString("DefaultConnection"))));
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +49,7 @@ namespace websoftProject
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
