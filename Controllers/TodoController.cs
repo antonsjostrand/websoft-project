@@ -11,12 +11,12 @@ namespace websoftProject.Controllers
 
     [ApiController]
     [Route("todo")]
-    public class ToDoTaskController : Controller 
+    public class TodoController : Controller 
     {
 
         public DatabaseService DatabaseService {get;}
 
-        public ToDoTaskController(DatabaseService databaseService)
+        public TodoController(DatabaseService databaseService)
         {
             DatabaseService = databaseService;
         }

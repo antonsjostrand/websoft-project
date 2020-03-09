@@ -58,8 +58,6 @@ namespace websoftProject.Services
         {
             int availableId = getAvailableUserId();
 
-            availableId++;
-
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -73,8 +71,23 @@ namespace websoftProject.Services
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
 
+                for(int i = 0; i < 52; i++)
+                {
+                    int id = getAvailableListId();
+
+                    MySqlCommand cmdWeek = new MySqlCommand();
+                    string insertWeek = "INSERT INTO list (idList, week, User_idUser) VALUES (@mcListId, @mcWeek, @mcUserId)";
+                    cmdWeek.CommandText = insertWeek;
+                    cmdWeek.Parameters.AddWithValue("@mcUserId", availableId);
+                    cmdWeek.Parameters.AddWithValue("@mcListId", id);
+                    cmdWeek.Parameters.AddWithValue("@mcWeek", (i+1));
+                    cmdWeek.Connection = conn;
+                    cmdWeek.ExecuteNonQuery();
+                }
+
             }
         }
+        
         public int getAvailableUserId()
         {
             int availableId = 0;
@@ -88,17 +101,54 @@ namespace websoftProject.Services
                 {
                     while (reader.Read())
                     {
+                        
                         availableId = Convert.ToInt32(reader["max(idUser)"]);
                     }
                 }
             }
 
-            return availableId;
+            return availableId + 1;
 
         }
-        public void getAvailableTaskId()
+        public int getAvailableTaskId()
         {
+            int availableId = 0;
 
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select max(idTask) from task", conn);
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        availableId = Convert.ToInt32(reader["max(idTask)"]);
+                    }
+                }
+            }
+
+            return availableId + 1;
+        }      
+        public int getAvailableListId()
+        {
+            int availableId = 0;
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select max(idList) from list", conn);
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        availableId = Convert.ToInt32(reader["max(idList)"]);
+                    }
+                }
+            }
+
+            return availableId + 1;
         }
         public List<TodoTask> getAllTasks()
         {

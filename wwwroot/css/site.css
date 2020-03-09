@@ -6,17 +6,20 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .dayDiv-Container {
-  margin: 10px;
-  padding: 2px;
+  margin: 1px;
   width: 140px;
-
+  border-style: solid;
+  border-width: 1px;
+  padding: 1px;
+  text-align: center;
 }
 
 .dayDiv {
-  width: inherit;
+  width: 130px;
+  margin: 2px;
   background: red;
-  font-size: 12px;
-  border-radius: 10px;
+  font-size: 14px;
+  border-radius: 5px;
 }
 
 .todolist-container {
@@ -40,7 +43,7 @@ for details on configuring this project to bundle and minify static web assets. 
   display: flex;
   overflow-x: auto;
   width: inherit;
-  height: 400px;
+  height: 300px;
 }
 
 a.navbar-brand {

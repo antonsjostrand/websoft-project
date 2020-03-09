@@ -32,31 +32,31 @@ function loadTasks(val){
                     switch(element.weekDay){
 
                         case "Monday":
-                            innerHtmlMonday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>";  
+                            innerHtmlMonday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
 
                         break;
                         case "Tuesday":
-                            innerHtmlTuesday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>"; 
+                            innerHtmlTuesday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
 
                         break;
                         case "Wednesday":
-                            innerHtmlWednesday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>"; 
+                            innerHtmlWednesday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
                             
                         break;
                         case "Thursday":
-                            innerHtmlThursday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>"; 
+                            innerHtmlThursday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
                             
                         break;
                         case "Friday":
-                            innerHtmlFriday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>"; 
+                            innerHtmlFriday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
                             
                         break;
                         case "Saturday":
-                            innerHtmlSaturday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>"; 
+                            innerHtmlSaturday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
                             
                         break;
                         case "Sunday":
-                            innerHtmlSunday += "<div class=dayDiv><p> ID: " + element.taskId + "</p><p> Title: " + element.title + "</p></div>"; 
+                            innerHtmlSunday += "<div class=dayDiv><p> ID: " + element.taskId + ", Title: " + element.title + " Description: " + element.description + "</p></div>"; 
                             
                         break;
                     }

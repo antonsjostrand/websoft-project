@@ -16,6 +16,8 @@ namespace websoftProject.Pages
 
         public List<TodoTask> taskList{get; private set;}
 
+        public int task {get; set;}
+
         public IndexModel(ILogger<IndexModel> logger, DatabaseService databaseService)
         {
             _logger = logger;
@@ -24,7 +26,7 @@ namespace websoftProject.Pages
 
         public void OnGet()
         {
-            taskList = DatabaseService.getAllTasks();
+            task = DatabaseService.getAvailableListId();
         }
     }
 }

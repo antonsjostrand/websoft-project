@@ -1,0 +1,53 @@
+@page
+@model TaskModel
+@{
+    Layout = "\\shared\\_TodoLayout.cshtml";
+    ViewData["Title"] = "Home page";
+
+    if(Model.sessionUser == null){
+        Response.Redirect("/Login");
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Task handler!</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<form action="/task" method="post">
+    <fieldset>
+        <legend>Create new task</legend>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <input type="text" name="description" value="">
+        </div>
+        <div>
+            <label for="listId">Week</label>
+            <input type="number" name="listId" value="">
+        </div>
+        <div>
+            <label for="weekDay">Weekday</label>
+            <select name="weekDay">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </fieldset>
+</form>
+
+
+
+
+
