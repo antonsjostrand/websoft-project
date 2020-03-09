@@ -1,0 +1,29 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Testing signup";
+}
+<h1>@ViewData["Title"]</h1>
+
+@{
+
+    <h2>@Model.test</h2>
+
+}
+
+<form action="/user/login" method="post">
+    <fieldset>
+        <legend>Login</legend>
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" value="">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="text" name="password" value="">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </fieldset>
+</form>

@@ -1,5 +1,7 @@
 using System;
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using websoftProject.Services;
@@ -7,13 +9,15 @@ using websoftProject.Services;
 namespace websoftProject.Pages
 {
 
-    public class SignupModel : PageModel
+    public class SuccessModel : PageModel
     {
-        private readonly ILogger<SignupModel> _logger;
+        private readonly ILogger<SuccessModel> _logger;
 
         public DatabaseService DatabaseService;
 
-        public SignupModel(ILogger<SignupModel> logger, DatabaseService databaseService)
+        public string Type {get; set;}
+
+        public SuccessModel(ILogger<SuccessModel> logger, DatabaseService databaseService)
         {
             _logger = logger;
             DatabaseService = databaseService;
@@ -24,6 +28,9 @@ namespace websoftProject.Pages
         public void OnGet()
         {
             test = DatabaseService.getAvailableUserId();
+
+            Type = Request.Query["type"];
+            
         }
        
     }

@@ -7,13 +7,13 @@ using websoftProject.Services;
 namespace websoftProject.Pages
 {
 
-    public class SignupModel : PageModel
+    public class LoginModel : PageModel
     {
-        private readonly ILogger<SignupModel> _logger;
+        private readonly ILogger<LoginModel> _logger;
 
         public DatabaseService DatabaseService;
 
-        public SignupModel(ILogger<SignupModel> logger, DatabaseService databaseService)
+        public LoginModel(ILogger<LoginModel> logger, DatabaseService databaseService)
         {
             _logger = logger;
             DatabaseService = databaseService;

@@ -1,4 +1,5 @@
 using System;
+using System.Web;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using websoftProject.Models;
@@ -20,9 +21,37 @@ namespace websoftProject.Services
             return new MySqlConnection(connectionString);
         }
 
-        public void login(string username, string password)
+        public bool login(string username, string password)
         {
 
+            string retrievedPassword = "";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlInsert = "SELECT idUser, password FROM user where username = @mcUsername";
+                cmd.CommandText = sqlInsert;
+                cmd.Parameters.AddWithValue("@mcUsername", username);
+                cmd.Parameters.AddWithValue("@mcPassword", password);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        retrievedPassword = reader["password"].ToString();
+                    }
+                }
+
+            }
+
+            if(retrievedPassword.Equals(password)){
+                
+                return true;
+            }else {
+                return false;
+            }
         }
 
         public void createUser(string username, string email, string password)

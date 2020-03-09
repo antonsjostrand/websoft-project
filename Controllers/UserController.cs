@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using websoftProject.Models;
 using websoftProject.Services;
 
@@ -8,7 +9,7 @@ namespace websoftProject.Controllers
 
     [ApiController]
     [Route("user")]
-    public class UserController 
+    public class UserController : Controller
     {
 
         public DatabaseService DatabaseService {get;}
@@ -18,16 +19,38 @@ namespace websoftProject.Controllers
             DatabaseService = databaseService;
         }
 
-        [HttpPut]
-        public void login([FromForm] LoginForm loginForm)
+        [HttpPost]
+        [Route("login")]
+        public IActionResult login([FromForm] LoginForm loginForm)
         {
+            if(loginForm.username == null || loginForm.password == null){
+                return Redirect("http://localhost:5000/Information?type=error&content=no-values");
+            }
+
+            bool success = DatabaseService.login(loginForm.username, loginForm.password);
+
+            if(success){
+                HttpContext.Session.SetString("username", loginForm.username);
+                return RedirectToPage("/Todo");
+            }else {
+                return Redirect("http://localhost:5000/Information?type=error&content=no-user");
+            }
+
             
         }
 
         [HttpPost]
-        public void signUp([FromForm] SignUpForm signUpForm)
+        public IActionResult signUp([FromForm] SignUpForm signUpForm)
         {
+
+            if(signUpForm.username == null || signUpForm.email == null || signUpForm.password == null){
+                return Redirect("http://localhost:5000/Information?type=error&content=no-values");
+            }
+
             DatabaseService.createUser(signUpForm.username, signUpForm.email, signUpForm.password);
+            
+            return Redirect("http://localhost:5000/Success?type=user");
+
         }
 
     }
