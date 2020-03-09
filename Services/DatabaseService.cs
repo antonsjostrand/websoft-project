@@ -87,7 +87,29 @@ namespace websoftProject.Services
 
             }
         }
-        
+
+        public void createTask(string title, string description, int listId, string weekDay)
+        {
+            int id = getAvailableTaskId();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlInsert = "INSERT INTO task (idTask, title, description, weekDay, list_idList, status) VALUES (@mcIdTask, @mcTitle, @mcDescription, @mcWeekday, @mcListId, @mcStatus)";
+                cmd.CommandText = sqlInsert;
+                cmd.Parameters.AddWithValue("@mcIdTask", id);
+                cmd.Parameters.AddWithValue("@mcTitle", title);
+                cmd.Parameters.AddWithValue("@mcDescription", description);
+                cmd.Parameters.AddWithValue("@mcWeekDay", weekDay);
+                cmd.Parameters.AddWithValue("@mcListId", listId);
+                cmd.Parameters.AddWithValue("@mcStatus", 1);
+                cmd.Connection = conn;
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+
         public int getAvailableUserId()
         {
             int availableId = 0;

@@ -30,9 +30,11 @@ namespace websoftProject.Controllers
         }
 
         [HttpPost]
-        public string createNewTask([FromForm] CreateTaskForm createTaskForm)
+        public IActionResult createNewTask([FromForm] CreateTaskForm createTaskForm)
         {
-            return createTaskForm.weekDay;
+            DatabaseService.createTask(createTaskForm.title, createTaskForm.description, createTaskForm.listId, createTaskForm.weekDay);
+
+            return RedirectToPage("/todo");
         }
 
     }
