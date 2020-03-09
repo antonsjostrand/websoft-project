@@ -123,8 +123,11 @@ namespace websoftProject.Services
                 {
                     while (reader.Read())
                     {
-                        
-                        availableId = Convert.ToInt32(reader["max(idUser)"]);
+                        if(reader["max(idUser)"] != DBNull.Value){
+                            availableId = Convert.ToInt32(reader["max(idUser)"]);
+                        }else {
+                            availableId = 0;
+                        }
                     }
                 }
             }
@@ -145,7 +148,11 @@ namespace websoftProject.Services
                 {
                     while (reader.Read())
                     {
+                        if(reader["max(idTask)"] != DBNull.Value){
                         availableId = Convert.ToInt32(reader["max(idTask)"]);
+                        }else{
+                            availableId = 0;
+                        }
                     }
                 }
             }
@@ -165,7 +172,11 @@ namespace websoftProject.Services
                 {
                     while (reader.Read())
                     {
-                        availableId = Convert.ToInt32(reader["max(idList)"]);
+                        if(reader["max(idList)"] != DBNull.Value){
+                            availableId = Convert.ToInt32(reader["max(idList)"]);
+                        }else{
+                            availableId = 0;
+                        }
                     }
                 }
             }
