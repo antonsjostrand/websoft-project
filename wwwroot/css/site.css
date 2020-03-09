@@ -1,6 +1,48 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.wrapper {
+  display: flex;
+}
+
+.dayDiv-Container {
+  margin: 10px;
+  padding: 2px;
+  width: 140px;
+
+}
+
+.dayDiv {
+  width: inherit;
+  background: red;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.todolist-container {
+  margin: 10px;
+  padding: 5px;
+  height: 75px;
+  width: 75px;
+  background: red;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.scroll-vertical {
+  display: flex;
+  overflow-x: auto;
+  width: inherit;
+  height: 120px;
+}
+
+.scroll-vertical-big {
+  display: flex;
+  overflow-x: auto;
+  width: inherit;
+  height: 400px;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;

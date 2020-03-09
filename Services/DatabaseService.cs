@@ -75,7 +75,6 @@ namespace websoftProject.Services
 
             }
         }
-
         public int getAvailableUserId()
         {
             int availableId = 0;
@@ -97,14 +96,13 @@ namespace websoftProject.Services
             return availableId;
 
         }
-
         public void getAvailableTaskId()
         {
 
         }
-        public List<ToDoTask> getAllTasks()
+        public List<TodoTask> getAllTasks()
         {
-            List<ToDoTask> taskList = new List<ToDoTask>();
+            List<TodoTask> taskList = new List<TodoTask>();
 
             //using dispatches the object when it is no longer in scope.
             using (MySqlConnection conn = GetConnection())
@@ -116,7 +114,7 @@ namespace websoftProject.Services
                 {
                     while (reader.Read())
                     {
-                        taskList.Add(new ToDoTask()
+                        taskList.Add(new TodoTask()
                         {
                             taskId = Convert.ToInt32(reader["idTask"]),
                             title = reader["title"].ToString(),
@@ -132,9 +130,95 @@ namespace websoftProject.Services
             return taskList;
 
         }
+        public List<TodoList> getAllListsByUsername(string username)
+        {
 
+            int userId = getUserIdByUsername(username);
+            List<TodoList> todoLists = new List<TodoList>();
 
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string select = "SELECT * FROM list WHERE User_idUser = @mcUserId";
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@mcUserId", userId);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        todoLists.Add(new TodoList()
+                        {
+                            listId = Convert.ToInt32(reader["idList"]),
+                            week = Convert.ToInt32(reader["week"]),
+                            userId = Convert.ToInt32(reader["User_idUser"])
+
+                        });
+                    }
+                }
+            }
+
+            return todoLists;
+        }
+        public int getUserIdByUsername(string username)
+        {
+
+            int userId = 0;
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string select = "SELECT idUser FROM user WHERE username = @mcUsername";
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@mcUsername", username);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        userId = Convert.ToInt32(reader["idUser"]);
+                    }
+                }
+            }
+
+            return userId;
+        }
+        public List<TodoTask> getAllTodoTaskByListId(int id)
+        {
+            List<TodoTask> todoLists = new List<TodoTask>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string select = "SELECT * FROM task WHERE list_idList = @mcListId";
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@mcListId", id);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        todoLists.Add(new TodoTask()
+                        {
+                            listId = Convert.ToInt32(reader["list_idList"]),
+                            status = Convert.ToInt32(reader["status"]),
+                            description = reader["description"].ToString(),
+                            title = reader["title"].ToString(),
+                            taskId = Convert.ToInt32(reader["idTask"]),
+                            weekDay = reader["weekDay"].ToString()
+
+                        });
+                    }
+                }
+            }
+
+            return todoLists;
+        }
     }
-
-
 }

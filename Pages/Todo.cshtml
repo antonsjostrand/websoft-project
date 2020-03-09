@@ -1,6 +1,7 @@
 @page
 @model TodoModel
 @{
+    Layout = "\\shared\\_TodoLayout.cshtml";
     ViewData["Title"] = "Home page";
 
     if(Model.sessionUser == null){
@@ -13,8 +14,28 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@foreach(var task in Model.taskList)
-{
-    <h2>@task.description </h2>
+<div>
+    <div class="scroll-vertical">
+        @{
+            foreach(var list in Model.todoLists){
+                var listId = list.listId;
+                <div class="todolist-container" onclick="loadTasks(@listId)" name=@listId>
+                    <h4>@list.listId<p>Week @list.week</p></h4>
+                </div>
+            }
+        }
+    </div>
 
-}
+    <div class="scroll-vertical-big"> 
+        <div class="dayDiv-Container" id="monday"></div>
+        <div class="dayDiv-Container" id="tuesday"></div>
+        <div class="dayDiv-Container" id="wednesday"></div>
+        <div class="dayDiv-Container" id="thursday"></div>
+        <div class="dayDiv-Container" id="friday"></div>
+        <div class="dayDiv-Container" id="saturday"></div>
+        <div class="dayDiv-Container" id="sunday"></div>
+    </div>
+
+</div>
+
+

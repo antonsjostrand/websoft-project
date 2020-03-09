@@ -2,7 +2,7 @@ using System;
 
 
 namespace websoftProject.Models {
-    public class ToDoTask
+    public class TodoTask
     {
         public int taskId { get; set;}
 
@@ -13,5 +13,7 @@ namespace websoftProject.Models {
         public int status {get; set;}
 
         public int listId {get; set;}
+
+        public string weekDay {get; set;}
     }
 }

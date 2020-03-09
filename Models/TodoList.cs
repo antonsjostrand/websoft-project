@@ -2,9 +2,9 @@ using System;
 
 
 namespace websoftProject.Models {
-    public class List
+    public class TodoList
     {
-        public int listId { get; private set;}
+        public int listId { get; set;}
 
         public int week {get; set;}
 
