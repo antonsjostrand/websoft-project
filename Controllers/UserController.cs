@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using websoftProject.Models;
@@ -61,6 +62,54 @@ namespace websoftProject.Controllers
 
             
 
+        }
+
+        [HttpGet]
+        [Route("all")]
+        public List<User> getAllUsers()
+        {
+            return DatabaseService.getAllUsers();
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public User GetUser(int id){
+
+            return DatabaseService.getUser(id);
+
+        }
+
+        [HttpPost]
+        [Route("edit")]
+        public IActionResult editUser([FromForm] EditUserForm editUserForm)
+        {
+            DatabaseService.editUser(editUserForm.id, editUserForm.email, editUserForm.username, editUserForm.password, editUserForm.privilege);
+
+            return Redirect("/admin");
+
+        }
+        
+        [HttpDelete]
+        [Route("delete/{id:int}")]
+        public IActionResult deleteUser(int id){
+            
+            List<int> listIds = DatabaseService.getAllListIdForUser(id);
+            
+            foreach(int listId in listIds)
+            {
+                List<int> taskIds = DatabaseService.getAllTaskIdByListId(listId);
+
+                foreach(int taskId in taskIds)
+                {
+                    DatabaseService.deleteTask(taskId, "");
+                }
+
+                DatabaseService.deleteList(listId);
+            }
+
+            DatabaseService.deleteUser(id);
+
+            return Ok();
         }
 
     }

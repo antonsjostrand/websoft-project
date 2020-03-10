@@ -255,6 +255,35 @@ namespace websoftProject.Services
             return availableId + 1;
         }
 
+        public User getUser(int id)
+        {
+            User user = new User();
+            
+            using(MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlSelect = "SELECT * FROM user WHERE idUser = @mcUserId";
+                cmd.CommandText = sqlSelect;
+                cmd.Parameters.AddWithValue("@mcUserId", id);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        
+                        user.userId = Convert.ToInt32(reader["idUser"]);
+                        user.email = reader["email"].ToString();
+                        user.username = reader["username"].ToString();
+                        user.privilege = Convert.ToInt32(reader["privilege"]);
+                    }
+                }
+            }
+
+        return user;
+
+        }
         public List<User> getAllUsers()
         {
 
@@ -283,8 +312,120 @@ namespace websoftProject.Services
             return userList;
         }
 
-        public void deleteUser()
+        public void deleteUser(int id)
         {
+             using (MySqlConnection conn = GetConnection())
+            {
+                Console.WriteLine("Delete user: " + id);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlUpdate = "DELETE FROM user WHERE idUser = @mcIdUser";
+                cmd.CommandText = sqlUpdate;
+                cmd.Parameters.AddWithValue("@mcIdUser", id);
+                cmd.Connection = conn;
+                int row = cmd.ExecuteNonQuery();
+                Console.WriteLine("Delete done");
+
+            }
+        }
+
+        public List<int> getAllListIdForUser(int id)
+        {
+            List<int> idList = new List<int>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string select = "SELECT idList FROM list WHERE User_idUser = @mcUserId";
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@mcUserId", id);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        idList.Add(Convert.ToInt32(reader["idList"]));
+                    }
+                }
+            }
+
+            return idList;
+        }
+
+        public List<int> getAllTaskIdByListId(int id)
+        {
+            List<int> taskIdList = new List<int>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string select = "SELECT idTask FROM task WHERE list_idList = @mcListId";
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@mcListId", id);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        taskIdList.Add(Convert.ToInt32(reader["idTask"]));
+                    }
+                }
+            }
+
+            return taskIdList;
+        }
+        public void editUser(int id, string email, string username, string password, int privilege)
+        {
+            if(password == null){
+
+                Console.WriteLine("Updating with no password");
+                Console.WriteLine("Parameters:");
+                Console.WriteLine("userID: " + id + ", username: " + username + ", email: " + email + ", privilege: " + privilege + ", password: " + password);
+
+                using(MySqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    string sqlUpdate = "UPDATE user SET email = @mcEmail, username = @mcUsername, privilege = @mcPrivilege WHERE idUser = @mcUserId";
+                    cmd.CommandText = sqlUpdate;
+                    cmd.Parameters.AddWithValue("@mcEmail", email);
+                    cmd.Parameters.AddWithValue("@mcUsername", username);
+                    cmd.Parameters.AddWithValue("@mcPrivilege", privilege);
+                    cmd.Parameters.AddWithValue("@mcUserId", id);
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                }
+
+            }else{
+
+                Console.WriteLine("Updating user with password");
+                Console.WriteLine("Parameters:");
+                Console.WriteLine("userID: " + id + ", username: " + username + ", email: " + email + ", privilege: " + privilege + ", password: " + password);
+
+                using(MySqlConnection conn = GetConnection())
+                {
+
+                    conn.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    string sqlUpdate = "UPDATE user SET email = @mcEmail, username = @mcUsername, privilege = @mcPrivilege, password = @mcPassword WHERE idUser = @mcUserId";
+                    cmd.CommandText = sqlUpdate;
+                    cmd.Parameters.AddWithValue("@mcEmail", email);
+                    cmd.Parameters.AddWithValue("@mcUsername", username);
+                    cmd.Parameters.AddWithValue("@mcPrivilege", privilege);
+                    cmd.Parameters.AddWithValue("@mcPassword", password);
+                    cmd.Parameters.AddWithValue("@mcUserId", id);
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        
 
         }
         public List<TodoTask> getAllTasks()
@@ -471,7 +612,7 @@ namespace websoftProject.Services
         {
             using (MySqlConnection conn = GetConnection())
             {
-                Console.WriteLine("Delete");
+                Console.WriteLine("Delete task: " + id);
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 string sqlUpdate = "DELETE FROM task WHERE idTask = @mcIdTask";
@@ -484,6 +625,23 @@ namespace websoftProject.Services
 
             }
 
+        }
+
+        public void deleteList(int id)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                Console.WriteLine("Delete list: " + id);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlUpdate = "DELETE FROM list WHERE idList = @mcIdList";
+                cmd.CommandText = sqlUpdate;
+                cmd.Parameters.AddWithValue("@mcIdList", id);
+                cmd.Connection = conn;
+                int row = cmd.ExecuteNonQuery();
+                Console.WriteLine("Delete done");
+
+            }
         }
     }
 }
