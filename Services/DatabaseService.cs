@@ -303,5 +303,67 @@ namespace websoftProject.Services
 
             return todoLists;
         }
+  
+        public List<TodoTask> getTodoTaskById(int id)
+        {
+            List<TodoTask> todoLists = new List<TodoTask>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string select = "SELECT * FROM task WHERE idTask = @mcTaskId";
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@mcTaskId", id);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        todoLists.Add(new TodoTask()
+                        {
+                            listId = Convert.ToInt32(reader["list_idList"]),
+                            status = Convert.ToInt32(reader["status"]),
+                            description = reader["description"].ToString(),
+                            title = reader["title"].ToString(),
+                            taskId = Convert.ToInt32(reader["idTask"]),
+                            weekDay = reader["weekDay"].ToString()
+
+                        });
+                    }
+                }
+            }
+
+            return todoLists;
+        }
+        
+        public void editTask(int id, string title, string description, int listId, string weekDay)
+        {
+
+            Console.WriteLine("Updating parameters: " );
+            Console.WriteLine("ID: " + id + " , title: " + title + ", description: " + description + ", listId: " + listId + ", weekday: " + weekDay);
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                Console.WriteLine("Edit");
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlUpdate = "UPDATE task SET title = @mcTitle, description = @mcDescription, list_idList = @mcListId, weekDay = @mcWeekDay WHERE idTask = @mcIdTask";
+                cmd.CommandText = sqlUpdate;
+                cmd.Parameters.AddWithValue("@mcIdTask", id);
+                cmd.Parameters.AddWithValue("@mcTitle", title);
+                cmd.Parameters.AddWithValue("@mcDescription", description);
+                cmd.Parameters.AddWithValue("@mcWeekDay", weekDay);
+                cmd.Parameters.AddWithValue("@mcListId", listId);
+                cmd.Connection = conn;
+                int row = cmd.ExecuteNonQuery();
+                Console.WriteLine("Edit done");
+                Console.WriteLine(row);
+
+
+            }
+
+        }
     }
 }

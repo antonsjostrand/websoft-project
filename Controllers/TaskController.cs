@@ -37,6 +37,15 @@ namespace websoftProject.Controllers
             return RedirectToPage("/todo");
         }
 
+        [Route("edit")]
+        [HttpPost]
+        public IActionResult editTask([FromForm] EditTaskForm editTaskForm)
+        {
+            DatabaseService.editTask(editTaskForm.id, editTaskForm.title, editTaskForm.description, editTaskForm.listId, editTaskForm.weekDay);
+
+            return RedirectToPage("/todo");
+        }
+
     }
 
 

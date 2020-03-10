@@ -18,9 +18,7 @@ namespace websoftProject.Pages
 
         public DatabaseService DatabaseService;
 
-        public List<TodoList> todoLists{get; private set;}
-
-        public List<TodoTask> todoTaskList {get; set;}
+        public List<TodoTask> task {get; set;}
 
         public string sessionUser {get; set;}
 
@@ -33,7 +31,8 @@ namespace websoftProject.Pages
         public void OnGet()
         {
             sessionUser = HttpContext.Session.GetString("username");
-            todoLists = DatabaseService.getAllListsByUsername(sessionUser);
+            int id = Convert.ToInt32(Request.Query["edit"]);
+            task = DatabaseService.getTodoTaskById(id);
         }
 
     }

@@ -47,6 +47,93 @@
     </fieldset>
 </form>
 
+@{
+    if(Model.task.Count > 0)
+    {
+        var task = Model.task[0];
+        
+        var listId = task.listId;
+        var taskId = task.taskId;
+        var title = task.title;
+        var description = task.description;
+        var weekDay = task.weekDay;
+
+        <form action="/task/edit" method="post">
+        <fieldset>
+        <legend>Edit Task</legend>
+        <div>
+            <label for="taskId">ID</label>
+            <input readonly type="number" id="id" name="id" value="@taskId">
+        </div>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="@title">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <input type="text" name="description" value="@description">
+        </div>
+        <div>
+            <label for="weekDay">Weekday</label>
+            <select name="weekDay">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+        <div>
+            <label for="week">Week</label>
+            <input type="number" id="listId" name="listId" value="@listId">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </fieldset>
+        </form>
+    } else{
+        <form action="/task/edit" method="post">
+        <fieldset>
+        <legend>Edit Task</legend>
+        <div>
+            <label for="taskId">ID</label>
+            <input type="text" id="taskId" name="taskId">
+        </div>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" >
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <input type="text" name="description">
+        </div>
+        <div>
+            <label for="weekDay">Weekday</label>
+            <select name="weekDay">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+        <div>
+            <label for="week">Week</label>
+            <input type="number" id="listId" name="listId" value="">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </fieldset>
+        </form>
+    }
+}
+
 
 
 

@@ -2,3 +2,11 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+
+function edit(val){
+
+    window.location.href = "http://localhost:5000/Task?edit=" + val;
+
+}
+
+
