@@ -168,7 +168,7 @@ namespace websoftProject.Services
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand();
-                string sqlInsert = "INSERT INTO task (idTask, title, description, weekDay, list_idList) VALUES (@mcIdTask, @mcTitle, @mcDescription, @mcWeekday, @mcListId)";
+                string sqlInsert = "INSERT INTO task (idTask, title, description, weekDay, list_idList) VALUES (@mcIdTask, @mcTitle, @mcDescription, @mcWeekDay, @mcListId)";
                 cmd.CommandText = sqlInsert;
                 cmd.Parameters.AddWithValue("@mcIdTask", id);
                 cmd.Parameters.AddWithValue("@mcTitle", title);
