@@ -31,6 +31,10 @@ namespace websoftProject.Controllers
 
             if(success){
                 HttpContext.Session.SetString("username", loginForm.username);
+                if(DatabaseService.isAdmin(loginForm.username)){
+                    HttpContext.Session.SetString("admin", "true");
+                }
+                
                 return RedirectToPage("/Todo");
             }else {
                 return Redirect("http://localhost:5000/Information?type=error&content=no-user");
@@ -47,9 +51,15 @@ namespace websoftProject.Controllers
                 return Redirect("http://localhost:5000/Information?type=error&content=no-values");
             }
 
-            DatabaseService.createUser(signUpForm.username, signUpForm.email, signUpForm.password);
+            bool success = DatabaseService.createUser(signUpForm.username, signUpForm.email, signUpForm.password);
             
-            return Redirect("http://localhost:5000/Success?type=user");
+            if(success){
+                return Redirect("http://localhost:5000/Success?type=user");
+            }else {
+                return Redirect("http://localhost:5000/Information?type=error&content=user-exists");
+            }
+
+            
 
         }
 

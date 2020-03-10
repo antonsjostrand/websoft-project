@@ -54,9 +54,47 @@ namespace websoftProject.Services
             }
         }
 
-        public void createUser(string username, string email, string password)
+        public bool isAdmin(string username)
+        {
+
+            int retrievedPrivilege = 0;
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlSelect = "SELECT privilege FROM user WHERE username = @mcUsername";
+                cmd.CommandText = sqlSelect;
+                cmd.Parameters.AddWithValue("@mcUsername", username);
+                cmd.Connection = conn;
+                
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        if(reader["privilege"] != DBNull.Value){
+                            retrievedPrivilege = Convert.ToInt32(reader["privilege"]);
+                        }
+                    }
+                }
+
+            }
+
+            if(retrievedPrivilege == 1){
+                Console.WriteLine("Is admin");
+                return true;
+            }else {
+                Console.WriteLine("Is not admin");
+                return false;
+            }
+        }
+        public bool createUser(string username, string email, string password)
         {
             int availableId = getAvailableUserId();
+
+            if(!userExists(username)){
+                return false;
+            }
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -84,10 +122,44 @@ namespace websoftProject.Services
                     cmdWeek.Connection = conn;
                     cmdWeek.ExecuteNonQuery();
                 }
-
+  
             }
+
+            return true;
         }
 
+        public bool userExists(string username)
+        {
+
+            string retrievedUsername = "";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlSelect = "SELECT username FROM user where username = @mcUsername";
+                cmd.CommandText = sqlSelect;
+                cmd.Parameters.AddWithValue("@mcUsername", username);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        if(reader["username"] != DBNull.Value){
+                            retrievedUsername = reader["username"].ToString();
+                        }
+                    }
+                }
+
+            }
+
+            if(retrievedUsername.Equals("")){
+                return true;
+            }else {
+                return false;
+            }
+        }
         public void createTask(string title, string description, int listId, string weekDay)
         {
             int id = getAvailableTaskId();

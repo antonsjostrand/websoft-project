@@ -1,0 +1,18 @@
+@page
+@model AdminModel
+@{
+    Layout = "\\shared\\_TodoLayout.cshtml";
+    ViewData["Title"] = "Admin page";
+
+
+    if(Model.sessionAdmin == null){
+        Response.Redirect("/Todo");
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome admin</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+

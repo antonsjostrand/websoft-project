@@ -35,6 +35,8 @@ namespace websoftProject.Pages
             if(Type.Equals("error")){
                 if(RequestContent.Equals("no-user")){
                     Message = "The entered credentials were not present in the database.";
+                }else if (RequestContent.Equals("user-exists")){
+                     Message = "User not created, perhaps the username was already taken.";
                 }else{
                     Message = "Make sure that you entered values in every textfield";
                 }
