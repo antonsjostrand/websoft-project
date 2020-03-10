@@ -46,6 +46,15 @@ namespace websoftProject.Controllers
             return RedirectToPage("/todo");
         }
 
+        [Route("delete")]
+        [HttpPost]
+        public IActionResult deleteTask([FromForm] DeleteTaskForm deleteTaskForm)
+        {
+            DatabaseService.deleteTask(deleteTaskForm.id, deleteTaskForm.title);
+
+            return RedirectToPage("/todo");
+        }
+
     }
 
 

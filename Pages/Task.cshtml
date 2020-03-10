@@ -94,6 +94,24 @@
         </div>
     </fieldset>
         </form>
+
+        <form action="/task/delete" method="post">
+        <fieldset>
+        <legend>Delete task</legend>
+        <div>
+            <label for="taskId">ID</label>
+            <input readonly type="number" id="id" name="id" value="@taskId">
+        </div>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="@title">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </fieldset>
+        </form>
+
     } else{
         <form action="/task/edit" method="post">
         <fieldset>
@@ -131,6 +149,25 @@
         </div>
     </fieldset>
         </form>
+
+        
+        <form action="/task/delete" method="post">
+        <fieldset>
+        <legend>Delete task</legend>
+        <div>
+            <label for="taskId">ID</label>
+            <input readonly type="number" id="id" name="id" value="">
+        </div>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </fieldset>
+        </form>
+        
     }
 }
 

@@ -365,5 +365,24 @@ namespace websoftProject.Services
             }
 
         }
+
+        public void deleteTask(int id, string title)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                Console.WriteLine("Delete");
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlUpdate = "DELETE FROM task WHERE idTask = @mcIdTask";
+                cmd.CommandText = sqlUpdate;
+                cmd.Parameters.AddWithValue("@mcIdTask", id);
+                cmd.Connection = conn;
+                int row = cmd.ExecuteNonQuery();
+                Console.WriteLine("Delete done");
+                Console.WriteLine(row);
+
+            }
+
+        }
     }
 }
