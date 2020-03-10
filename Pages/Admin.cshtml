@@ -15,4 +15,24 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Privilege</th>
+    </tr>
+    @{
+        foreach(var user in Model.userList)
+        {
+            <tr>
+                <td>@user.userId</td>
+                <td>@user.username</td>
+                <td>@user.email</td>
+                <td>@user.privilege</td>
+            </tr>
+        }
+    }
+</table>
+
 

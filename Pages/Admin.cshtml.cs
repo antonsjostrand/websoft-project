@@ -19,6 +19,8 @@ namespace websoftProject.Pages
 
         public string sessionAdmin {get;set;}
 
+        public List<User> userList {get; set;}
+
         public AdminModel(ILogger<AdminModel> logger, DatabaseService databaseService)
         {
             _logger = logger;
@@ -29,6 +31,7 @@ namespace websoftProject.Pages
         {
             sessionUser = HttpContext.Session.GetString("username");
             sessionAdmin = HttpContext.Session.GetString("admin");
+            userList = DatabaseService.getAllUsers();
         }
     }
 }

@@ -255,6 +255,39 @@ namespace websoftProject.Services
 
             return availableId + 1;
         }
+
+        public List<User> getAllUsers()
+        {
+
+            List<User> userList = new List<User>();
+
+            using(MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM user", conn);
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        userList.Add(new User()
+                        {
+                            userId = Convert.ToInt32(reader["idUser"]),
+                            email = reader["email"].ToString(),
+                            username = reader["username"].ToString(),
+                            privilege = Convert.ToInt32(reader["privilege"])
+                        });
+                    }
+                }
+            }
+
+            return userList;
+        }
+
+        public void deleteUser()
+        {
+
+        }
         public List<TodoTask> getAllTasks()
         {
             List<TodoTask> taskList = new List<TodoTask>();
