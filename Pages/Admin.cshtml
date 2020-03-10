@@ -25,7 +25,8 @@
     @{
         foreach(var user in Model.userList)
         {
-            <tr>
+
+            <tr id="userRow" onclick="getUser(@user.userId)">
                 <td>@user.userId</td>
                 <td>@user.username</td>
                 <td>@user.email</td>

@@ -168,14 +168,13 @@ namespace websoftProject.Services
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand();
-                string sqlInsert = "INSERT INTO task (idTask, title, description, weekDay, list_idList, status) VALUES (@mcIdTask, @mcTitle, @mcDescription, @mcWeekday, @mcListId, @mcStatus)";
+                string sqlInsert = "INSERT INTO task (idTask, title, description, weekDay, list_idList) VALUES (@mcIdTask, @mcTitle, @mcDescription, @mcWeekday, @mcListId)";
                 cmd.CommandText = sqlInsert;
                 cmd.Parameters.AddWithValue("@mcIdTask", id);
                 cmd.Parameters.AddWithValue("@mcTitle", title);
                 cmd.Parameters.AddWithValue("@mcDescription", description);
                 cmd.Parameters.AddWithValue("@mcWeekDay", weekDay);
                 cmd.Parameters.AddWithValue("@mcListId", listId);
-                cmd.Parameters.AddWithValue("@mcStatus", 1);
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
 
@@ -307,7 +306,6 @@ namespace websoftProject.Services
                             taskId = Convert.ToInt32(reader["idTask"]),
                             title = reader["title"].ToString(),
                             description = reader["description"].ToString(),
-                            status = Convert.ToInt32(reader["status"]),
                             listId = Convert.ToInt32(reader["list_idList"])
                         });
                     }
@@ -395,7 +393,6 @@ namespace websoftProject.Services
                         todoLists.Add(new TodoTask()
                         {
                             listId = Convert.ToInt32(reader["list_idList"]),
-                            status = Convert.ToInt32(reader["status"]),
                             description = reader["description"].ToString(),
                             title = reader["title"].ToString(),
                             taskId = Convert.ToInt32(reader["idTask"]),
@@ -429,7 +426,6 @@ namespace websoftProject.Services
                         todoLists.Add(new TodoTask()
                         {
                             listId = Convert.ToInt32(reader["list_idList"]),
-                            status = Convert.ToInt32(reader["status"]),
                             description = reader["description"].ToString(),
                             title = reader["title"].ToString(),
                             taskId = Convert.ToInt32(reader["idTask"]),

@@ -9,4 +9,8 @@ function edit(val){
 
 }
 
+function getUser(val){
+    console.log(val);
+}
+
 
