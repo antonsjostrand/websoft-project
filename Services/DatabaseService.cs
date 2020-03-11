@@ -160,9 +160,11 @@ namespace websoftProject.Services
                 return false;
             }
         }
-        public void createTask(string title, string description, int listId, string weekDay)
+        public void createTask(string title, string description, int week, string weekDay, string username)
         {
             int id = getAvailableTaskId();
+
+            int listId = getListIdForUserAndWeek(week, username);
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -564,6 +566,7 @@ namespace websoftProject.Services
                 {
                     while (reader.Read())
                     {
+
                         todoLists.Add(new TodoTask()
                         {
                             listId = Convert.ToInt32(reader["list_idList"]),
@@ -642,6 +645,37 @@ namespace websoftProject.Services
                 Console.WriteLine("Delete done");
 
             }
+        }
+
+        //Get listid from week and userid
+        public int getListIdForUserAndWeek(int week, string username)
+        {
+            int userId = getUserIdByUsername(username);
+            int listId = 0;
+
+            using(MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlSelect = "SELECT idList FROM list WHERE week = @mcWeek AND User_idUser = @mcUserId";
+                cmd.CommandText = sqlSelect;
+                cmd.Parameters.AddWithValue("@mcWeek", week);
+                cmd.Parameters.AddWithValue("mcUserId", userId);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+
+                        listId = Convert.ToInt32(reader["idList"]);
+
+                    }
+                }
+                
+            }
+
+            return listId;
         }
     }
 }

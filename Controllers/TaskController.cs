@@ -32,7 +32,7 @@ namespace websoftProject.Controllers
         [HttpPost]
         public IActionResult createNewTask([FromForm] CreateTaskForm createTaskForm)
         {
-            DatabaseService.createTask(createTaskForm.title, createTaskForm.description, createTaskForm.listId, createTaskForm.weekDay);
+            DatabaseService.createTask(createTaskForm.title, createTaskForm.description, createTaskForm.week, createTaskForm.weekDay, HttpContext.Session.GetString("username"));
 
             return RedirectToPage("/todo");
         }
