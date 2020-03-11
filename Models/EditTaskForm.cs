@@ -11,7 +11,7 @@ namespace websoftProject.Models
 
         public string description {get; set;}
 
-        public int listId {get; set;}
+        public int week {get; set;}
 
         public string weekDay {get; set;}
 

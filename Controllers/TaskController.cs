@@ -41,7 +41,7 @@ namespace websoftProject.Controllers
         [HttpPost]
         public IActionResult editTask([FromForm] EditTaskForm editTaskForm)
         {
-            DatabaseService.editTask(editTaskForm.id, editTaskForm.title, editTaskForm.description, editTaskForm.listId, editTaskForm.weekDay);
+            DatabaseService.editTask(editTaskForm.id, editTaskForm.title, editTaskForm.description, editTaskForm.week, editTaskForm.weekDay, HttpContext.Session.GetString("username"));
 
             return RedirectToPage("/todo");
         }

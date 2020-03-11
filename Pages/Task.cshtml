@@ -57,6 +57,7 @@
         var title = task.title;
         var description = task.description;
         var weekDay = task.weekDay;
+        var week = Model.week;
 
         <form action="/task/edit" method="post">
         <fieldset>
@@ -87,7 +88,7 @@
         </div>
         <div>
             <label for="week">Week</label>
-            <input type="number" id="listId" name="listId" value="@listId">
+            <input type="number" id="week" name="week" value="@week">
         </div>
         <div>
             <input type="submit">

@@ -20,6 +20,8 @@ namespace websoftProject.Pages
 
         public List<TodoTask> task {get; set;}
 
+        public int week {get; set;}
+
         public string sessionUser {get; set;}
 
         public TaskModel(ILogger<TaskModel> logger, DatabaseService databaseService)
@@ -33,6 +35,7 @@ namespace websoftProject.Pages
             sessionUser = HttpContext.Session.GetString("username");
             int id = Convert.ToInt32(Request.Query["edit"]);
             task = DatabaseService.getTodoTaskById(id);
+            week = DatabaseService.getWeekByListId(task[0].listId);
         }
 
     }

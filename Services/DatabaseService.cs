@@ -583,8 +583,10 @@ namespace websoftProject.Services
             return todoLists;
         }
         
-        public void editTask(int id, string title, string description, int listId, string weekDay)
+        public void editTask(int id, string title, string description, int week, string weekDay, string username)
         {
+
+            int listId = getListIdForUserAndWeek(week, username);
 
             Console.WriteLine("Updating parameters: " );
             Console.WriteLine("ID: " + id + " , title: " + title + ", description: " + description + ", listId: " + listId + ", weekday: " + weekDay);
@@ -677,5 +679,35 @@ namespace websoftProject.Services
 
             return listId;
         }
+    
+        public int getWeekByListId(int listId)
+        {
+
+            int week = 0;
+            
+            using(MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                string sqlSelect = "SELECT week FROM list WHERE idList = @mcListId";
+                cmd.CommandText = sqlSelect;
+                cmd.Parameters.AddWithValue("@mcListId", listId);
+                cmd.Connection = conn;
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        week = Convert.ToInt32(reader["week"]);
+                    }
+                
+                }
+
+            }
+
+            return week;
+
+        }
+    
     }
 }
