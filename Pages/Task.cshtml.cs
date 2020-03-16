@@ -34,8 +34,10 @@ namespace websoftProject.Pages
         {
             sessionUser = HttpContext.Session.GetString("username");
             int id = Convert.ToInt32(Request.Query["edit"]);
-            task = DatabaseService.getTodoTaskById(id);
-            week = DatabaseService.getWeekByListId(task[0].listId);
+            if(id != 0){
+                task = DatabaseService.getTodoTaskById(id);
+                week = DatabaseService.getWeekByListId(task[0].listId);
+            }
         }
 
     }

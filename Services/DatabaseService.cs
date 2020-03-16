@@ -552,6 +552,7 @@ namespace websoftProject.Services
         public List<TodoTask> getTodoTaskById(int id)
         {
             List<TodoTask> todoLists = new List<TodoTask>();
+            Console.WriteLine("Getting todotask by task ID: " + id);
 
             using (MySqlConnection conn = GetConnection())
             {
