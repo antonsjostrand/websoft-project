@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hashimveseli/Desktop/websoft/websoft-project/websoftProject.csproj": {}
+    "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj": {}
   },
   "projects": {
-    "/Users/hashimveseli/Desktop/websoft/websoft-project/websoftProject.csproj": {
+    "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hashimveseli/Desktop/websoft/websoft-project/websoftProject.csproj",
+        "projectUniqueName": "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj",
         "projectName": "websoftProject",
-        "projectPath": "/Users/hashimveseli/Desktop/websoft/websoft-project/websoftProject.csproj",
-        "packagesPath": "/Users/hashimveseli/.nuget/packages/",
-        "outputPath": "/Users/hashimveseli/Desktop/websoft/websoft-project/obj/",
+        "projectPath": "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\websoftProject.csproj",
+        "packagesPath": "C:\\Users\\Anton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anton\\Desktop\\Year_3\\Software_development_for_the_web\\project\\websoftProject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "/Users/hashimveseli/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

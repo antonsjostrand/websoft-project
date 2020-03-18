@@ -58,6 +58,12 @@ for details on configuring this project to bundle and minify static web assets. 
   width: inherit;
 }
 
+.crud-div {
+  display: flex;
+  width: inherit;
+  height: fit-content;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
