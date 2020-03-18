@@ -1,0 +1,19 @@
+@page
+@model SuccessModel
+@{
+    if(Model.Type.Equals("user")){
+        ViewData["Message"] = "User successfully created.";
+    }else {
+        ViewData["Message"] = "Account successfully created.";
+    }
+
+    ViewData["Title"] = "Sucessfully created!";
+}
+<h1 style="text-align: center;">@ViewData["Title"]</h1>
+
+@{
+
+    <h3 style="text-align: center;">@ViewData["Message"]</h3>    
+
+}
+

@@ -1,0 +1,41 @@
+@page
+@model TodoModel
+@{
+    Layout = "\\shared\\_TodoLayout.cshtml";
+    ViewData["Title"] = "Home page";
+
+    if(Model.sessionUser == null){
+        Response.Redirect("/Login");
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Overview of your To Do's!</h1>
+    <p>Choose week below.</p>
+</div>
+
+<div>
+    <div class="scroll-vertical">
+        @{
+            foreach(var list in Model.todoLists){
+                var listId = list.listId;
+                <div class="todolist-container" onclick="loadTasks(@listId)" name=@listId>
+                    <h4><p>Week: @list.week</p> <h6><p>Id: @list.listId</p></h6></h4>
+                </div>
+            }
+        }
+    </div
+
+    <div class="scroll-vertical-big"> 
+        <div class="dayDiv-Container" id="monday"></div>
+        <div class="dayDiv-Container" id="tuesday"></div>
+        <div class="dayDiv-Container" id="wednesday"></div>
+        <div class="dayDiv-Container" id="thursday"></div>
+        <div class="dayDiv-Container" id="friday"></div>
+        <div class="dayDiv-Container" id="saturday"></div>
+        <div class="dayDiv-Container" id="sunday"></div>
+    </div>
+
+</div>
+
+

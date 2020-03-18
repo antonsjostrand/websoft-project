@@ -1,0 +1,44 @@
+@page
+@model AdminModel
+@{
+    Layout = "\\shared\\_TodoLayout.cshtml";
+    ViewData["Title"] = "Admin page";
+
+
+    if(Model.sessionAdmin == null){
+        Response.Redirect("/Todo");
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome admin</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Privilege</th>
+    </tr>
+    @{
+        foreach(var user in Model.userList)
+        {
+
+            <tr id="userRow" onclick="getUser(@user.userId)">
+                <td>@user.userId</td>
+                <td>@user.username</td>
+                <td>@user.email</td>
+                <td>@user.privilege</td>
+            </tr>
+        }
+    }
+</table>
+
+
+<div id="wrapper" class="wrapper">
+
+</div>
+
+

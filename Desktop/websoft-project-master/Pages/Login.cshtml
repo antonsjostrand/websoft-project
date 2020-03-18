@@ -1,0 +1,34 @@
+@page
+@model LoginModel
+@{
+   
+}
+<h1>@ViewData["Title"]</h1>
+
+@{
+
+
+}
+
+<div class="login-page">
+<div class="form"> 
+
+<form action="/user/login" method="post">
+    <fieldset>
+        <div>
+            <legend id="shadowText" style="font-size: 45px;">Login</legend>
+
+            <label for="username">Username</label>
+            <input class="loginInput" type="text" name="username" value="">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input class="loginInput" type="text" name="password" value="">
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="loginButton">
+        </div>
+    </fieldset>
+</form>
+</div>
+</div>

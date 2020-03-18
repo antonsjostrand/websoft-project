@@ -1,0 +1,13 @@
+@page
+@model InformationModel
+@{
+    ViewData["Title"] = "Home page";
+
+    ViewData["Message"] = Model.Message;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Try again!</h1>
+</div>
+
+<h3 style="text-align: center;">@ViewData["Message"]</h3>
