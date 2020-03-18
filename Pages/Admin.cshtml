@@ -11,27 +11,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome admin</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4" id="shadowText">Admin Page</h1>
 </div>
 
-<table>
+<table class="adminPage">
     <tr>
         <th>User ID</th>
         <th>Username</th>
         <th>Email</th>
         <th>Privilege</th>
     </tr>
+
     @{
-        foreach(var user in Model.userList)
+        foreach (var user in Model.userList)
         {
 
-            <tr id="userRow" onclick="getUser(@user.userId)">
-                <td>@user.userId</td>
-                <td>@user.username</td>
-                <td>@user.email</td>
-                <td>@user.privilege</td>
-            </tr>
+        <tr id="userRow" onclick="getUser(@user.userId)">
+
+            <td>@user.userId</td>
+            <td>@user.username</td>
+            <td>@user.email</td>
+            <td>@user.privilege</td>
+        </tr>
         }
     }
 </table>

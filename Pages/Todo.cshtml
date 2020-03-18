@@ -10,9 +10,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome TO TODO!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4" id="shadowText">Weekly schedule</h1>
+    <p>Choose a week below and start planning!</p>
 </div>
+
+<br />
+<br />
+
 
 <div>
     <div class="scroll-vertical">
@@ -20,7 +24,12 @@
             foreach(var list in Model.todoLists){
                 var listId = list.listId;
                 <div class="todolist-container" onclick="loadTasks(@listId)" name=@listId>
-                    <h4>@list.listId<p>Week @list.week</p></h4>
+                    <h5>
+
+                        <p><u>Week</u></p>
+                        <h3 class="listWeek"> @list.week</h3>
+
+                    </h5>
                 </div>
             }
         }

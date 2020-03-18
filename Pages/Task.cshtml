@@ -10,25 +10,38 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome Task handler!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4" id="shadowText">Handle your tasks!</h1>
+    <p>Create, edit and delete your tasks</p>
+    <br />
 </div>
 
 <form action="/task" method="post">
-    <fieldset>
-        <legend>Create new task</legend>
+
+
+    <div class="polaroid" id="createTaskLeft">
+        <div class="legend1">Create new task</div>
+
         <div>
             <label for="title">Title</label>
+        </div>
+        <div>
             <input type="text" id="title" name="title">
         </div>
+
         <div>
             <label for="description">Description</label>
-            <input type="text" name="description" value="">
         </div>
         <div>
+            <input type="text" name="description" value="">
+        </div>
+
+        <div>
             <label for="week">Week</label>
+        </div>
+        <div>
             <input type="number" name="week" value="">
         </div>
+
         <div>
             <label for="weekDay">Weekday</label>
             <select name="weekDay">
@@ -41,10 +54,15 @@
                 <option value="Sunday">Sunday</option>
             </select>
         </div>
-        <div>
+
+
+        <div class="container-one">
             <input type="submit">
         </div>
-    </fieldset>
+    </div>
+
+
+
 </form>
 
 @{
@@ -59,76 +77,118 @@
         var weekDay = task.weekDay;
         var week = Model.week;
 
-        <form action="/task/edit" method="post">
-        <fieldset>
-        <legend>Edit Task</legend>
-        <div>
-            <label for="taskId">ID</label>
-            <input readonly type="number" id="id" name="id" value="@taskId">
-        </div>
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="@title">
-        </div>
-        <div>
-            <label for="description">Description</label>
-            <input type="text" name="description" value="@description">
-        </div>
-        <div>
-            <label for="weekDay">Weekday</label>
-            <select name="weekDay">
-                <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
-                <option value="Sunday">Sunday</option>
-            </select>
-        </div>
-        <div>
-            <label for="week">Week</label>
-            <input type="number" id="week" name="week" value="@week">
-        </div>
-        <div>
-            <input type="submit">
-        </div>
-    </fieldset>
-        </form>
+    <form action="/task/edit" method="post">
 
-        <form action="/task/delete" method="post">
-        <fieldset>
-        <legend>Delete task</legend>
-        <div>
-            <label for="taskId">ID</label>
-            <input readonly type="number" id="id" name="id" value="@taskId">
+
+        <div class="polaroid" id="createTaskMiddle">
+
+            <div class="legend1">Edit task</div>
+
+            <div>
+                <label for="taskId">ID</label>
+            </div>
+
+            <div>
+                <input readonly type="number" id="id" name="id" value="@taskId">
+            </div>
+
+            <div>
+                <label for="title">Title</label>
+            </div>
+            <div>
+                <input type="text" id="title" name="title" value="@title">
+            </div>
+
+            <div>
+                <label for="description">Description</label>
+            </div>
+            <div>
+                <input type="text" name="description" value="@description">
+            </div>
+
+            <div>
+                <label for="weekDay">Weekday</label>
+            </div>
+            <div>
+                <select name="weekDay">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="week">Week</label>
+            </div>
+            <div>
+                <input type="number" id="week" name="week" value="@week">
+            </div>
+
+            <div class="container-one">
+                <input type="submit">
+            </div>
         </div>
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="@title">
+
+</form>
+
+
+
+    <form action="/task/delete" method="post">
+
+
+        <div class="polaroid" id="createTaskRight">
+            <div class="legend1">Delete task</div>
+            <div>
+                <label for="taskId">ID</label>
+            </div>
+            <div>
+                <input readonly type="number" id="id" name="id" value="@taskId">
+            </div>
+            <div>
+                <label for="title">Title</label>
+            </div>
+            <div>
+                <input type="text" id="title" name="title" value="@title">
+            </div>
+            <div>
+                <input type="submit">
+            </div>
         </div>
-        <div>
-            <input type="submit">
-        </div>
-    </fieldset>
-        </form>
+    </form>
 
     } else{
-        <form action="/task/edit" method="post">
-        <fieldset>
-        <legend>Edit Task</legend>
+
+<form action="/task/edit" method="post">
+
+    <div class="polaroid" id="createTaskMiddle">
+
+        <div class="legend1">Edit task</div>
+
         <div>
             <label for="taskId">ID</label>
+        </div>
+        <div>
             <input type="text" id="taskId" name="taskId">
         </div>
+
         <div>
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" >
         </div>
         <div>
+            <input type="text" id="title" name="title">
+        </div>
+
+        <div>
             <label for="description">Description</label>
+        </div>
+        <div>
             <input type="text" name="description">
         </div>
+
         <div>
             <label for="weekDay">Weekday</label>
             <select name="weekDay">
@@ -143,30 +203,41 @@
         </div>
         <div>
             <label for="week">Week</label>
+        </div>
+        <div>
             <input type="number" id="listId" name="listId" value="">
         </div>
         <div>
             <input type="submit">
         </div>
-    </fieldset>
-        </form>
+    </div>
+
+
+
+
+</form>
 
         
         <form action="/task/delete" method="post">
-        <fieldset>
-        <legend>Delete task</legend>
-        <div>
-            <label for="taskId">ID</label>
-            <input readonly type="number" id="id" name="id" value="">
-        </div>
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="">
-        </div>
-        <div>
-            <input type="submit">
-        </div>
-    </fieldset>
+
+            <div class="polaroid" id="createTaskRight">
+                <div class="legend1">Delete task</div>
+                <div>
+                    <label for="taskId">ID</label>
+                </div>
+                <div>
+                    <input readonly type="number" id="id" name="id" value="">
+                </div>
+                <div>
+                    <label for="title">Title</label>
+                </div>
+                <div>
+                    <input type="text" id="title" name="title" value="">
+                </div>
+                <div>
+                    <input type="submit">
+                </div>
+            </div>
         </form>
         
     }
