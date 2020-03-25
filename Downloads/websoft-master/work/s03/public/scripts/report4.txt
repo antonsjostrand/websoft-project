@@ -1,0 +1,22 @@
+Report S04
+
+-----------------------------------------------------------------------------------------------
+
+Write your report by answering and reflecting on these questions. Write freely, between 15 to 30  sentences.
+Tell me about your previous experience on node/npm or any equal programming tools.
+How do you feel about working with JavaScript, Node and Express?
+Explain how you did take on the coding assignment, did you have a plan and did it work?
+What grade did you aim for and was it a difficult level?
+What is your TIL for this course section?
+
+Node and npm are completely new for me. It took a while for me to understand what they are and how they work but once
+i got through the "tutorials" you provided, i understood. Also, very good lectures so far Mikael! Thanks to them, i
+now feel good about working with JavaScript, Node and Express. The structure on canvas with all the information you need
+is helping me a lot. Once i sit and play around with javascript, node and express for a couple of hours, i feel like it
+would be more comfortable to work with and more fun. Just got to get there!
+I took on the coding assignment just as i took on the exercises for Node and Express. Same way of organizing and structuring
+the code. That was the plan and yes it worked, no problems!
+To start with i just aimed for grade 3 because i thought it seemed difficult in the beginning when reading about the subject.
+Now that it is finished, i will try to aim for a higher grade of course.
+My TIL for this course section was basically to build an web application using Node and Express and to structure the files
+along with the code.

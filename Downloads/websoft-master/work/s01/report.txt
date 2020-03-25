@@ -1,0 +1,6 @@
+Report S01
+-------------------------------------------------------
+- I have used Git and GitHub before on a couple of courses throughout the years, but Markdown and GitHub Pages is new to me. All the courses where we have worked on a project, Git and GitHub have been involved. It was very hard for me to understand how it worked in the beginning but once i got my hands on it i learned it and found out how helpful it was for programmers.
+- I have never created a whole website before but i tried it out a couple of times. Just basic stuff. I am super excited to be interacting with websites in this course because i always wanted to learn that and i knew this course will come in the last semester, now we're here!
+- My experience with web application development is mostly from the course "Network Applications" we had this autumn. There, we learned to work with e.g. REST Api and JSON through client-server applications.
+- Today i learned and repeated a lot. Using the terminal correctly with git was repetition but using Atom was new. I learned how the text editor, terminal and GitHub go hand in hand. I learned more concepts on GitHub and an insight of how to work with Markdown.

@@ -1,0 +1,11 @@
+Report S02
+
+-----------------------------------------------------------------------------------------------
+
+- I have no previous experience with HTML, CSS and JavaScript other than being familiar with them, knowing how they look like and how they work. So i guess it's safe to say i familiar with them but
+not actual experience with them. I have not worked with them like i have now in this course.
+- As i understands it, HTML and CSS are not programming languages but text editors (markup languages and style sheet languages), where HTML defines the structure of your content and CSS defines the style of the content.
+CSS is more like 'rules' applied to a HTML document that you have in a external file whereas HTML is what you write when developing a website. Then you have JavaScript which is a dynamic programming language that can provide
+dynamic interactivity on websites. Summary: all of these work together to provide the best website possible.
+- The browser is just an "application" you use to be able to reach the web and to read websites. Web servers are just computers who run websites and HTTP Protocol was designed for communication between web browsers and web servers.
+- Today I Learned a lot actually! I learned how to interact with HTML, CSS and JavaScript. How to work with a markup program (Atom) to create a website and how to add links and pictures to a website.

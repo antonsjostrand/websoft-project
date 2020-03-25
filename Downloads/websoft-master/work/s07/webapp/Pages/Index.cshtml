@@ -1,0 +1,13 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to my webapp!</h1>
+</div>
+
+@foreach (var account in Model.Accounts){
+    <h2><a href="/account/@account.Number">@account.Label</a></h2>
+}
